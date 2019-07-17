@@ -15,7 +15,7 @@ steps:
   args:
     - 'build'
     - '-t'
-    - 'gcr.io/$PROJECT_ID/ci_challenge:latest'
+    - 'gcr.io/$PROJECT_ID/ci_challenge_go:latest'
     - '.'
 
-images: ['gcr.io/$PROJECT_ID/ci_challenge:latest']
+images: ['gcr.io/$PROJECT_ID/ci_challenge_go:latest']
