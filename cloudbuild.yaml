@@ -1,0 +1,21 @@
+steps:
+
+- id: 'Instalando o app ci_challenge'
+  name: 'gcr.io/cloud-builders/go'
+  args: ['install', 'ci_challenge']
+  env: ['GOPATH=.']
+
+- id: 'Executando Teste Unitário'
+  name: 'gcr.io/cloud-builders/go'
+  args: ['test', '-v','./...']
+  env: ['GOPATH=.']
+
+- id: 'Fazendo o Push da Imagem Para o Cloud Registry'
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/ci_challenge:latest'
+    - '.'
+
+images: ['gcr.io/$PROJECT_ID/ci_challenge:latest']
